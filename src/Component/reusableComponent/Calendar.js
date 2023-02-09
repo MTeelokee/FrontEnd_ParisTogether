@@ -30,7 +30,9 @@ const CalendarComponent = (props) => {
   //fetch tous les dates où il existe des participants en base pour cette idEvent
   const fetchByEventId = () => {
     axios
-      .get(`http://localhost:3001/request/dateForEvent/all/${props.id}`)
+      .get(
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/dateForEvent/all/${props.id}`
+      )
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
   };
@@ -39,7 +41,7 @@ const CalendarComponent = (props) => {
   const addUserEvent = (dateSelect) => {
     axios
       .put(
-        `http://localhost:3001/request/dateForEvent/${props.id}`,
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/dateForEvent/${props.id}`,
         { date: dateSelect.toString().slice(0, 15), pseudo: user.pseudo },
         { headers: { authorization: token } }
       )

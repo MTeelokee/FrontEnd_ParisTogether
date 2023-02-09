@@ -22,7 +22,7 @@ const Profile = () => {
   const addFavorite = async (tag) => {
     axios
       .put(
-        `http://localhost:3001/request/user`,
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/user`,
         { favoriteTag: tag },
         { headers: { authorization: token } }
       )
@@ -33,10 +33,13 @@ const Profile = () => {
   };
   const removeFavorite = async (tag) => {
     axios
-      .delete(`http://localhost:3001/request/user`, {
-        data: { favoriteTag: tag },
-        headers: { authorization: token },
-      })
+      .delete(
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/user`,
+        {
+          data: { favoriteTag: tag },
+          headers: { authorization: token },
+        }
+      )
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
@@ -65,12 +68,16 @@ const Profile = () => {
     formData.append("profile_picture", image);
 
     axios
-      .put("http://localhost:3001/request/uploadimage", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          authorization: token,
-        },
-      })
+      .put(
+        "https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/uploadimage",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            authorization: token,
+          },
+        }
+      )
       .then((response) => {
         console.log(response.data);
       })
@@ -112,7 +119,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        "http://localhost:3001/request/update",
+        "https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/update",
         { email },
         {
           headers: {
@@ -144,7 +151,7 @@ const Profile = () => {
     }
     try {
       const res = await axios.put(
-        "http://localhost:3001/request/update",
+        "https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/update",
         { password: password, confirm_password: confirmPassword },
         {
           headers: {
@@ -172,7 +179,7 @@ const Profile = () => {
             <h1 className="profiletitle">Ta photo de profil</h1>
             <img
               className="profileuserpic"
-              src={`http://localhost:3001${user.profile_picture}`}
+              src={`https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app${user.profile_picture}`}
               alt=""
             />
             <div>

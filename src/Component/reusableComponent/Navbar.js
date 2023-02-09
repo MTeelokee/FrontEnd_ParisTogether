@@ -52,7 +52,7 @@ const Navbar = () => {
           <div className="navbarbuttons">
             <img
               className="navbarprofilepic"
-              src={`http://localhost:3001${user.profile_picture}`}
+              src={`https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app${user.profile_picture}`}
               alt="avatar de ton profil"
             />
             <button

@@ -22,7 +22,7 @@ const Cards = (props) => {
       AddEvent(idEvent);
       await axios
         .put(
-          `http://localhost:3001/request/user`,
+          `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/user`,
           { favoriteEvent: idEvent },
           { headers: { authorization: token } }
         )
@@ -42,10 +42,13 @@ const Cards = (props) => {
   const removeFavorite = async (idEvent) => {
     if (user) {
       axios
-        .delete(`http://localhost:3001/request/user`, {
-          data: { favoriteEvent: idEvent },
-          headers: { authorization: token },
-        })
+        .delete(
+          `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/user`,
+          {
+            data: { favoriteEvent: idEvent },
+            headers: { authorization: token },
+          }
+        )
         .then((res) => console.log(res.data))
         .catch((err) => console.log(err));
     } else {

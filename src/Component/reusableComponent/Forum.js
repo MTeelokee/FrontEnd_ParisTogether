@@ -24,9 +24,13 @@ const CommentList = () => {
   const sendMessage = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:3001/request/comment/${id}`, sendComments, {
-        headers: { authorization: token },
-      })
+      .post(
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/comment/${id}`,
+        sendComments,
+        {
+          headers: { authorization: token },
+        }
+      )
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
     e.target.reset();
@@ -36,7 +40,9 @@ const CommentList = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/request/comment/${id}`)
+      .get(
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/comment/${id}`
+      )
       .then((res) => {
         res.data !== "No comments" && setComments(res.data);
       })
@@ -65,7 +71,7 @@ const CommentList = () => {
                   key={comment.id}
                 >
                   <img
-                    src={`http://localhost:3001${comment.profile_picture}`}
+                    src={`https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app${comment.profile_picture}`}
                     width="30px"
                     height={"30px"}
                     style={{ borderRadius: "100px" }}

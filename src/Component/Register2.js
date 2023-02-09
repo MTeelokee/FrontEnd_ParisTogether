@@ -14,7 +14,7 @@ const Register2 = () => {
   const addFavorite = async (tag) => {
     axios
       .put(
-        `http://localhost:3001/request/user`,
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/user`,
         { favoriteTag: tag },
         { headers: { authorization: token } }
       )
@@ -26,10 +26,13 @@ const Register2 = () => {
 
   const removeFavorite = async (tag) => {
     axios
-      .delete(`http://localhost:3001/request/user`, {
-        data: { favoriteTag: tag },
-        headers: { authorization: token },
-      })
+      .delete(
+        `https://back-end-paris-together-czx8nkl1c-mteelokee.vercel.app/request/user`,
+        {
+          data: { favoriteTag: tag },
+          headers: { authorization: token },
+        }
+      )
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
@@ -76,8 +79,6 @@ const Register2 = () => {
                           ? "register2tagselected"
                           : ""
                       }`}
-                
-
                       onClick={() =>
                         user &&
                         user.favoriteTag.length > 0 &&
